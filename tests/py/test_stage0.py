@@ -1,5 +1,6 @@
 import importlib
 import json
+import numpy as np
 from fractions import Fraction
 from pathlib import Path
 
@@ -19,7 +20,7 @@ def test_skeleton():
         module = importlib.import_module(f"dronesim.{name}")
         check(f"import {name}", f"{name}.py", Path(module.__file__).relative_to(package).as_posix())
     values = {k: v for k, v in vars(params).items() if not k.startswith("_")}
-    check("S0 parameters", {"tilt_compensation": 1}, values)
+    check("tilt compensation", 1, values["tilt_compensation"])
 
     # The brief specifies 1.25 ms. Construct an exact reference grid in seconds.
     step = Fraction("1.25") / 1000
@@ -34,4 +35,4 @@ def test_skeleton():
     }
     for name, data in (("params", values), ("stage0", checks)):
         path = root / "expected" / f"{name}.json"
-        path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+        path.write_text(json.dumps(data, indent=2, default=lambda v: np.asarray(v).tolist()) + "\n", encoding="utf-8")

@@ -1,3 +1,52 @@
 {
-  "tilt_compensation": 1
+  "gravity": 9.81,
+  "drone_mass": 300,
+  "inertia_xx": 100,
+  "inertia_yy": 100,
+  "inertia_zz": 185,
+  "arm_length": 1.5556349186104048,
+  "motor_x": [
+    1.1,
+    -1.1,
+    1.1,
+    -1.1
+  ],
+  "motor_y": [
+    1.1,
+    -1.1,
+    -1.1,
+    1.1
+  ],
+  "motor_spin_dir": [
+    1,
+    1,
+    -1,
+    -1
+  ],
+  "drag_linear": 20,
+  "drag_rotational": 50,
+  "ground_stiffness": 300000.0,
+  "ground_damping": 18973.665961010276,
+  "ground_side_friction": 5000.0,
+  "ground_level_stiffness": 20000.0,
+  "ground_level_damping": 2000.0,
+  "initial_state": [
+    0.0,
+    0.0,
+    -5.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "kT_prop": 0.01293,
+  "kQ_prop": 0.0009,
+  "J_prop": 0.7,
+  "tilt_compensation": 1,
+  "hover_speed": 238.54255847579134
 }

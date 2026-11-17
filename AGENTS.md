@@ -197,9 +197,12 @@ Tests (Python first, then the same in MATLAB; body alone, constant inputs):
 | motors off, drag on | both 0, `drag_linear = 20`, 1 s | falls about 4.80 m; hand formula (g/k)(t-(1-e^(-kt))/k), k = drag_linear/drone_mass |
 | pitch | motors 1 and 3 (front) thrust `drone_mass*gravity/4 - 10`, motors 2 and 4 (rear) `+10`, `motor_speed = sqrt(T/kT_prop)`, hover torques | moment 1.1 x (-40) = -44 N m, qdot = -0.44 rad/s^2 at t=0, height holds at first |
 | yaw | hover speeds, `motor_torque = [5;5;0;0]` | rdot = 10/inertia_zz = 0.0541 rad/s^2, no roll or pitch |
-| ground | start `down = 0.5`, hover speeds | pushed back above the ground, settles (report the settling height) |
+| ground | motors off, start at `down = 0` with zero velocity | settles at `drone_mass*gravity/ground_stiffness` with no overshoot, within about 0.5 s |
 
 ## S2. Thrust to speed, ideal motors, mixer
+
+The saved local `DroneSim.slx` is the source of truth for completed stages. S2 requires the existing
+`Drone body` and preserves its blocks and wiring. The S2 runner tests S1 before S2.
 
 Add to the parameter file:
 

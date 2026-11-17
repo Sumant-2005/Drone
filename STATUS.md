@@ -2,46 +2,43 @@
 
 | Stage | Python | MATLAB R2023a |
 |---|---|---|
-| S0 Skeleton | Smoke test passed | User reran S0 after the empty-model fix. All five steps passed. |
-| S1 Drone body | All six scenarios passed, with an additional fixed-step contact check | Written, not run |
-| S2–S8 | Pending | Pending |
+| S0 Skeleton | Smoke test passed | All five steps passed on the user's rerun. |
+| S1 Drone body | Six body cases and a fixed-step ground check passed | User reported all five steps PASS on the original S1. The revised ground case awaits the combined run. |
+| S2 Mixer, thrust to speed, ideal motors | Parameter, component and connected-body tests passed | Written, not run. |
+| S3–S8 | Pending | Pending |
 
 ## Run next
 
-Pull the latest main branch. From the repository root in MATLAB R2023a with Simulink, run
+Pull main. From the repository root containing your saved DroneSim.slx, run
 
 ```matlab
-addpath('matlab'); run_stage(1)
+addpath('matlab'); run_stage(2)
 ```
 
-Paste back the console output, including the comparison lines, the layout report and the five-step summary. The builder creates or replaces the Drone body subsystem in DroneSim.slx. The test requests a model update, then copies the body into a temporary model for constant speed and torque inputs. Each case gets its own initial state and drag setting. The saved diagram contains the body with its two inputs and one states bus output. A reshape adapts the integrated column to the Demux input, and a local Goto/From pair returns the integrated state to Dynamics.
+Paste the comparison lines, layout report and six-step summary. The order is build_stage2, test_params, test_stage1, test_stage2, check_layout, export_diagrams.
+
+Your local DroneSim.slx is the source of truth for the finished body. The S2 builder requires DroneSim/Drone body and checks for it before editing the model. It places its three subsystems upstream and connects speed and torque to the existing body ports. On a rebuild it replaces its tagged S2 subsystems. An occupied input or an unrelated wire on an S2 subsystem is reported before replacement. The body tests use a temporary copy of the installed body. S2 checks the four connections on the installed model and exercises copies of the installed blocks in test benches.
+
+For an explicit fresh S1 build, build_stage1 aligns the diagram to the actual port centers and branches vertically to the feedback tag. The S2 runner uses the saved body directly.
 
 ## Python verification
 
-From an activated virtual environment at the repository root, run
-
-```sh
-python -m pip install -r requirements.txt
-python -m pip install -e .
-python -c "import dronesim"
-pytest -q
-```
-
-The suite writes the parameter reference and stage fixtures under expected/. The S1 tests check the continuous-time reference against independent calculations. The ground test also integrates the contact transition with RK4 on the configured 1.25 ms grid.
+With the repository virtual environment active, run `pytest -q`. The tests generate expected/params.json and the stage comparison fixtures. Excerpts from the sandbox run follow.
 
 ```text
-fall_free/fall_m: 4.905 | 4.905000000000003 | PASS
-fall_drag/fall_m: 4.797792711038241 | 4.797792711038252 | PASS
-pitch/qdot: -0.44 | -0.44 | PASS
-yaw/rdot: 0.05405405405405406 | 0.05405405405405406 | PASS
-ground/height_m: 86.82118347477041 | 86.8211736414371 | PASS
-3 passed in 0.66s
+ground/down_m: 0.00981 | 0.009809999999992026 | PASS
+ground/overshoot_m: 0 | 0 | PASS
+ground/settling_s: 0.18486283531640899 | 0.185 | PASS
+tau_s: 0.0083 | 0.008321564354160328 | PASS
+5 passed in 1.02s
 ```
 
-Hover kept all twelve states at their initial values. The fall distances are after one second. Pitch and yaw accelerations are the actual derivatives at the initial instant.
+The corrected ground test starts at the surface at rest with zero speed and shaft torque on all four motors. Gravity loads the spring until it supports the weight. Settling time is the first sample after which penetration stays within 2% of mass times gravity divided by stiffness, observed through one second. Both the continuous reference sampled on the solver grid and the fixed-step RK4 recheck meet the 0.5 s deadline. The S1 body equations are unchanged.
 
-The prescribed ground test starts 0.5 m below ground at hover thrust. The spring pushes the body upward. Once the normal force reaches zero, thrust balances weight and linear drag slows the ascent. At 240 s the predicted height is 86.82117 m, with vertical speed below one micrometre per second. The independent contact solution gives a limiting height of 86.82118 m. The Python fixed-step recheck gives 86.82099 m. This height depends on the placeholder contact and drag parameters.
+At exact hover the reference was 238.54256 rad/s and shaft torque was 51.21230 N m per motor. The rounded command 0.5766 was tested separately. The clipped command probes reached 0 or 314.15927 rad/s and the measured peak slew was 103.43065 rad/s². A sample-and-hold on the 1.25 ms solver grid lets the inherited Rate Limiter use its hover initial condition. The fixtures hold the command long enough to complete a full speed traverse. The isolated motor time constant check bypasses the limiter and interpolates between solver samples.
 
-## Local results and open issues
+Roll, pitch and yaw mixer patterns and saturation passed. With a positive 0.02 demand on one axis at a time, the connected Python plant gave positive accelerations 0.2 s after the step on all three axes. The slew rate, torque and transient responses depend on the specified propeller and ideal motor parameters.
 
-The initial S0 run failed only when it attempted to simulate the empty model. After that call was removed, the user reported all five steps PASS in R2023a. S1 model compilation, simulation comparisons, layout counts and exported diagrams await the local run.
+## Local verification pending
+
+The initial S0 empty-model simulation failure was resolved and S0 passed locally. The user also confirmed the original S1 model passed in R2023a and manually straightened its wires. The corrected S1 ground comparison, fresh-build S1 layout code and S2 scripts are written, not run in MATLAB here. The fresh S1 layout code is exercised only by an explicit S1 rebuild.

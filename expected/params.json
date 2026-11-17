@@ -48,5 +48,40 @@
   "kQ_prop": 0.0009,
   "J_prop": 0.7,
   "tilt_compensation": 1,
-  "hover_speed": 238.54255847579134
+  "hover_speed": 238.54255847579134,
+  "max_speed": 314.1592653589793,
+  "pole_pairs": 10,
+  "flux_linkage": 0.0542,
+  "J_rotor": 0.0383,
+  "I_max": 226.66666666666666,
+  "motor_time_constant": 0.0083,
+  "drive_sample_time": 0.00125,
+  "mixer_matrix": [
+    [
+      -1,
+      1,
+      1
+    ],
+    [
+      1,
+      -1,
+      1
+    ],
+    [
+      1,
+      1,
+      -1
+    ],
+    [
+      -1,
+      -1,
+      -1
+    ]
+  ],
+  "max_thrust": 1276.1398490608542,
+  "hover_command": 0.5765433941597061,
+  "torque_constant": 0.813,
+  "J_total": 0.7383,
+  "max_motor_torque": 184.27999999999997,
+  "speed_slew_limit": 103.43064921056022
 }

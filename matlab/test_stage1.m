@@ -61,9 +61,21 @@ for i = 1:numel(names)
             got.roll_pitch_rate_peak = max(abs([bus.roll.Data(:);bus.pitch.Data(:); ...
                 bus.p.Data(:);bus.q.Data(:)]));
         case 'ground'
-            got.height_m = -bus.down.Data(end);
+            equilibrium = evalin(workspace,'drone_mass*gravity/ground_stiffness');
+            down = bus.down.Data(:);
+            got.down_m = down(end);
+            got.overshoot_m = max(0,max(down)-equilibrium);
             got.vertical_speed_mps = bus.v_down.Data(end);
-            got.limiting_height_m = got.height_m-got.vertical_speed_mps*evalin(workspace,'drone_mass')/c.drag;
+            outside = find(abs(down-equilibrium)>c.band_fraction*equilibrium,1,'last');
+            got.settling_s = inf;
+            if isempty(outside)
+                got.settling_s = bus.down.Time(1);
+            elseif outside < numel(down)
+                got.settling_s = bus.down.Time(outside+1);
+            end
+            within = got.settling_s <= c.deadline_s;
+            report_check('ground/settling deadline',num2str(c.deadline_s),num2str(got.settling_s),within);
+            ok = ok && within;
     end
     metrics = fieldnames(c.checks);
     for j = 1:numel(metrics)

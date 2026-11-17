@@ -4,6 +4,9 @@ assert(isfile(fullfile('matlab','run_stage.m')), 'Run from the repository root.'
 addpath('matlab');
 tasks = {sprintf('build_stage%d',N),'test_params',sprintf('test_stage%d',N), ...
     'check_layout','export_diagrams'};
+if N == 2
+    tasks = [tasks(1:2), {'test_stage1'}, tasks(3:end)];
+end
 status = repmat({'SKIPPED'},size(tasks));
 errors = {};
 for i = 1:numel(tasks)

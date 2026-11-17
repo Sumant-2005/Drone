@@ -1,0 +1,16 @@
+{
+  "fixed_step_s": {
+    "value": 0.00125,
+    "atol": 0
+  },
+  "top_level_blocks": {
+    "value": 0,
+    "atol": 0
+  },
+  "solver": {
+    "value": "ode4"
+  },
+  "solver_type": {
+    "value": "Fixed-step"
+  }
+}

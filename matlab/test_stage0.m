@@ -13,6 +13,4 @@ report_check('Solver type',ref.solver_type.value,kind,ok(2));
 report_check('Step (s)',num2str(ref.fixed_step_s.value),num2str(step),ok(3));
 report_check('Blocks',num2str(ref.top_level_blocks.value),num2str(numel(blocks)),ok(4));
 assert(all(ok),'S0 configuration mismatch.');
-sim(mdl);
-report_check('Empty model simulation','completed','completed',true);
 end

@@ -2,7 +2,7 @@
 
 | Stage | Python | MATLAB R2023a |
 |---|---|---|
-| S0 Skeleton | Smoke test passed | Written, not run |
+| S0 Skeleton | Smoke test passed | Fix awaiting local rerun |
 | S1–S8 | Pending | Pending |
 
 ## Run next
@@ -13,7 +13,7 @@ Open MATLAB R2023a with Simulink, set the current folder to this repository root
 addpath('matlab'); run_stage(0)
 ```
 
-The runner creates DroneSim.slx, checks the parameters and solver settings, simulates the empty model, checks the diagram layout and exports PNGs into results/diagrams/. Paste the console output, including the summary table and any error details, into the next task.
+The runner creates DroneSim.slx, checks the parameters and solver settings, checks that the model is empty, checks the diagram layout and exports PNGs into results/diagrams/. Paste the console output, including the summary table and any error details, into the next task.
 
 ## Python verification
 
@@ -34,4 +34,4 @@ The import succeeded. The smoke test imported the six stage modules, checked the
 
 ## Local results and open issues
 
-Awaiting the first MATLAB run. In particular, only that run can confirm R2023a accepts the callbacks and solver, simulates the empty diagram, and exports it. The Python modules for future stages are empty skeleton files. No flight dynamics have been implemented.
+In the first R2023a run, all checks passed up to the call to simulate the empty model in test_stage0.m. Simulink rejected that call because DroneSim contained no blocks. The other runner steps passed. The model compilation check starts in S1, once the model has blocks. The Python modules for future stages are empty skeleton files. No flight dynamics have been implemented.

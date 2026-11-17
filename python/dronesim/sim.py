@@ -45,7 +45,9 @@ def flight(duration, *, mode="mission", value=None, table=None, mass=P.drone_mas
         angles,collective = ctrl.velocity(u,x,value if mode=="altitude" else 0.)
         if mode in ("rate","attitude"):
             angles = injected if mode=="attitude" else np.zeros(3)
-            collective = ctrl.hover
+            # Trim the vertical component on the inner-loop bench so a sustained
+            # roll or pitch rate does not turn the test into a ground impact.
+            collective = ctrl.hover/max(.1,np.cos(x[6])*np.cos(x[7]))
         rates = injected if mode=="rate" else ctrl.attitude(angles,x)
         axis = ctrl.rate(rates,x)
         cmds = mix(collective,axis)

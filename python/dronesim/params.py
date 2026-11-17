@@ -69,3 +69,5 @@ climb_ki = climb_kp*velocity_zero
 altitude_kp = climb_wc/4
 accel_limit = gravity*max_tilt
 climb_limit = 0.35
+
+show_flight_path = 1

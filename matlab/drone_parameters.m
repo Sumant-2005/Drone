@@ -53,6 +53,7 @@ drive_sample_time = 0.00125;  % s, reference limiter updates once per ode4 step
 
 %% 5. Flight controller
 mixer_matrix = [-1 1 1; 1 -1 1; 1 1 -1; -1 -1 -1];  % dimensionless, roll/pitch/yaw to FR/BL/FL/BR
+show_flight_path = 1;  % switch, draw the 3-D path at normal simulation stop
 tilt_compensation = 1;  % 1 on, 0 off, specified tilt compensation switch
 %% 6. Derived values
 hover_speed = sqrt(drone_mass*gravity/4/kT_prop);  % rad/s, 4 props lift the weight

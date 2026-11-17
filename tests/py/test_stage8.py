@@ -55,9 +55,4 @@ def test_system():
         cases.append(c); traces[c['name']] = h
     assert losses[1] < losses[0]
     save(8,cases,mirrors=mirrors)
-    folder = ROOT/'build'/'flight-recheck'
-    folder.mkdir(parents=True,exist_ok=True)
-    for name,h in traces.items():
-        np.savez_compressed(folder/(name+'.npz'),time=h[:,0],xyz=h[:,1:4],velocity=h[:,4:7],
-                            angles=h[:,7:10],rates=h[:,10:13],speed=h[:,13:17],reference=h[:,17:21])
     recheck(ROOT)

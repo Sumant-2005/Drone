@@ -1,0 +1,432 @@
+{
+  "cases": [
+    {
+      "name": "rate_p",
+      "inputs": {
+        "duration": 10,
+        "mode": "rate",
+        "value": [
+          0.05,
+          0.0,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "p",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.1834414183323954,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 1.0018416980315548
+        },
+        {
+          "signal": "p",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.12025665162231935,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.018784531838091652,
+          "high": 0.43830574288880525
+        },
+        {
+          "signal": "p",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 10.629858554467674,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 100
+        },
+        {
+          "signal": "p",
+          "op": "end",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": 0.05000000000448355,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": 0.0495,
+          "high": 0.0505
+        }
+      ]
+    },
+    {
+      "name": "release_p",
+      "inputs": {
+        "duration": 6,
+        "mode": "rate",
+        "value": [
+          2.0,
+          0.0,
+          0.0
+        ],
+        "pulse_end": 0.075
+      },
+      "checks": [
+        {
+          "signal": "axis1",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.15,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 0.1499999999,
+          "high": 0.1500000001
+        },
+        {
+          "signal": "integral1",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.006624773125733016,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.1000000001
+        },
+        {
+          "signal": "p",
+          "op": "max",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.15125458419302498,
+          "atol": 0.03,
+          "rtol": 0.0,
+          "low": 0.001,
+          "high": 2
+        },
+        {
+          "signal": "p",
+          "op": "min",
+          "start": 0.075,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.03444875727655587,
+          "atol": 0.01,
+          "rtol": 0.0,
+          "low": -0.04537637525790749,
+          "high": 1e-06
+        },
+        {
+          "signal": "p",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -1.496813541409686e-08,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": -0.002,
+          "high": 0.002
+        }
+      ]
+    },
+    {
+      "name": "rate_q",
+      "inputs": {
+        "duration": 10,
+        "mode": "rate",
+        "value": [
+          0.0,
+          0.05,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "q",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.1834414183323954,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 1.0018416980315548
+        },
+        {
+          "signal": "q",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.12025665162231935,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.018784531838091652,
+          "high": 0.43830574288880525
+        },
+        {
+          "signal": "q",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 10.629858554467674,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 100
+        },
+        {
+          "signal": "q",
+          "op": "end",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": 0.050000000004483396,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": 0.0495,
+          "high": 0.0505
+        }
+      ]
+    },
+    {
+      "name": "release_q",
+      "inputs": {
+        "duration": 6,
+        "mode": "rate",
+        "value": [
+          0.0,
+          2.0,
+          0.0
+        ],
+        "pulse_end": 0.075
+      },
+      "checks": [
+        {
+          "signal": "axis2",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.15,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 0.1499999999,
+          "high": 0.1500000001
+        },
+        {
+          "signal": "integral2",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.006624773125733016,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.1000000001
+        },
+        {
+          "signal": "q",
+          "op": "max",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.15125458419302498,
+          "atol": 0.03,
+          "rtol": 0.0,
+          "low": 0.001,
+          "high": 2
+        },
+        {
+          "signal": "q",
+          "op": "min",
+          "start": 0.075,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.03444875727655587,
+          "atol": 0.01,
+          "rtol": 0.0,
+          "low": -0.04537637525790749,
+          "high": 1e-06
+        },
+        {
+          "signal": "q",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -1.4968135477547963e-08,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": -0.002,
+          "high": 0.002
+        }
+      ]
+    },
+    {
+      "name": "rate_r",
+      "inputs": {
+        "duration": 10,
+        "mode": "rate",
+        "value": [
+          0.0,
+          0.0,
+          0.05
+        ]
+      },
+      "checks": [
+        {
+          "signal": "r",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.966377340945582,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 3.9999999794969066
+        },
+        {
+          "signal": "r",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 0.4621019749820597,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.074999999615567,
+          "high": 1.7499999910298967
+        },
+        {
+          "signal": "r",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 0.05,
+          "value": 5.8003487268363685,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 100
+        },
+        {
+          "signal": "r",
+          "op": "end",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": 0.05001495763817096,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": 0.0495,
+          "high": 0.0505
+        }
+      ]
+    },
+    {
+      "name": "release_r",
+      "inputs": {
+        "duration": 6,
+        "mode": "rate",
+        "value": [
+          0.0,
+          0.0,
+          2.0
+        ],
+        "pulse_end": 0.075
+      },
+      "checks": [
+        {
+          "signal": "axis3",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.08,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 0.07999999990000001,
+          "high": 0.0800000001
+        },
+        {
+          "signal": "integral3",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.0032935006581624585,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.0800000001
+        },
+        {
+          "signal": "r",
+          "op": "max",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.11572077061561845,
+          "atol": 0.03,
+          "rtol": 0.0,
+          "low": 0.001,
+          "high": 2
+        },
+        {
+          "signal": "r",
+          "op": "min",
+          "start": 0.075,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.0067501474384833405,
+          "atol": 0.01,
+          "rtol": 0.0,
+          "low": -0.03471623118468553,
+          "high": 1e-06
+        },
+        {
+          "signal": "r",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 2.6229786074289054e-06,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": -0.002,
+          "high": 0.002
+        }
+      ]
+    }
+  ],
+  "design": [
+    {
+      "axis": "p",
+      "crossover": 7.985293500678413,
+      "phase_margin_deg": 75.72993376235493
+    },
+    {
+      "axis": "q",
+      "crossover": 7.985293500678413,
+      "phase_margin_deg": 75.72993376235493
+    },
+    {
+      "axis": "r",
+      "crossover": 2.0000000102515467,
+      "phase_margin_deg": 90.34148052496359
+    }
+  ]
+}

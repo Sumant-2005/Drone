@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "name": "assembled_hover",
+      "inputs": {
+        "duration": 5,
+        "mode": "velocity",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "position_error",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 0.0,
+          "atol": 1e-07,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 1e-07
+        }
+      ]
+    }
+  ]
+}

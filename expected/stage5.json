@@ -1,0 +1,357 @@
+{
+  "cases": [
+    {
+      "name": "step_v_north",
+      "inputs": {
+        "duration": 20,
+        "mode": "velocity",
+        "value": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "v_north",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 2.354466180513394,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 12.307692307692307
+        },
+        {
+          "signal": "v_north",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 1.6724321702081366,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.23076923076923075,
+          "high": 5.384615384615384
+        },
+        {
+          "signal": "v_north",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 0.24909480667074657,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "v_north",
+          "op": "end",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.999970055363762,
+          "atol": 0.003,
+          "rtol": 0.0,
+          "low": 0.997,
+          "high": 1.003
+        },
+        {
+          "signal": "tilt",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.06672634238796626,
+          "atol": 0.002,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.3490658504988659
+        }
+      ]
+    },
+    {
+      "name": "step_v_east",
+      "inputs": {
+        "duration": 20,
+        "mode": "velocity",
+        "value": [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "v_east",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 2.354466180513395,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 12.307692307692307
+        },
+        {
+          "signal": "v_east",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 1.6724321702081366,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.23076923076923075,
+          "high": 5.384615384615384
+        },
+        {
+          "signal": "v_east",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 0.24909480667074657,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "v_east",
+          "op": "end",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.9999700553637622,
+          "atol": 0.003,
+          "rtol": 0.0,
+          "low": 0.997,
+          "high": 1.003
+        },
+        {
+          "signal": "tilt",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.06672634238796626,
+          "atol": 0.002,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.3490658504988659
+        }
+      ]
+    },
+    {
+      "name": "step_climb",
+      "inputs": {
+        "duration": 20,
+        "mode": "velocity",
+        "value": [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "climb",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 0.8136478921660699,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 3.2
+        },
+        {
+          "signal": "climb",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 0.553727324029128,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.06,
+          "high": 1.4
+        },
+        {
+          "signal": "climb",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 5.001215969286799,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "climb",
+          "op": "end",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.999826642985552,
+          "atol": 0.003,
+          "rtol": 0.0,
+          "low": 0.997,
+          "high": 1.003
+        },
+        {
+          "signal": "tilt",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.0,
+          "atol": 0.002,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.3490658504988659
+        }
+      ]
+    },
+    {
+      "name": "step_altitude_change",
+      "inputs": {
+        "duration": 20,
+        "mode": "altitude",
+        "value": 1.0
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 2.6393059860566686,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 12.8
+        },
+        {
+          "signal": "altitude_change",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 1.7841192569944033,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.24,
+          "high": 5.6
+        },
+        {
+          "signal": "altitude_change",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1,
+          "value": 0.3120178157303144,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "altitude_change",
+          "op": "end",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 1.001592364259599,
+          "atol": 0.003,
+          "rtol": 0.0,
+          "low": 0.997,
+          "high": 1.003
+        },
+        {
+          "signal": "tilt",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 20.0,
+          "target": 1.0,
+          "value": 0.0,
+          "atol": 0.002,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.3490658504988659
+        }
+      ]
+    },
+    {
+      "name": "forward_0",
+      "inputs": {
+        "duration": 10,
+        "mode": "velocity",
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "compensation": false
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "min",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": -0.01755861394762981,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": -0.5,
+          "high": 1e-08
+        }
+      ]
+    },
+    {
+      "name": "forward_1",
+      "inputs": {
+        "duration": 10,
+        "mode": "velocity",
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "compensation": true
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "min",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": -9.747012284666567e-05,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": -0.5,
+          "high": 1e-08
+        }
+      ]
+    }
+  ],
+  "loss_off_m": 0.01755861394762981,
+  "loss_on_m": 9.747012284666567e-05
+}

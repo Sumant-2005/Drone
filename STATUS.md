@@ -1,44 +1,62 @@
 # DroneSim_Simple handoff
 
-| Stage | Python | MATLAB R2023a |
-|---|---|---|
-| S0 Skeleton | Smoke test passed | All five steps passed on the user's rerun. |
-| S1 Drone body | Six body cases and a fixed-step ground check passed | User reported all five steps PASS on the original S1. The revised ground case awaits the combined run. |
-| S2 Mixer, thrust to speed, ideal motors | Parameter, component and connected-body tests passed | Written, not run. |
-| S3–S8 | Pending | Pending |
+The build and reference scripts now cover S0–S8. The complete 52 s mission and independent S8 replay passed in Python. The user confirmed S0 and the original S1 in MATLAB R2023a. The revised ground case and S2–S8 are written, not run in MATLAB here.
 
-## Run next
+## Run the final validation
 
-Pull main. From the repository root containing your saved DroneSim.slx, run
+Pull main. Set MATLAB's current folder to the repository root containing your saved DroneSim.slx and run
 
 ```matlab
-addpath('matlab'); run_stage(2)
+addpath('matlab'); run_stage(8)
 ```
 
-Paste the comparison lines, layout report and six-step summary. The order is build_stage2, test_params, test_stage1, test_stage2, check_layout, export_diagrams.
+The builder requires the existing Drone body. It uses the installed S2 plant or adds S2 if all three of its subsystems are missing, builds the missing controller and mission stages, and connects the forward path and states bus. The S1 body and its hand-edited internal wiring remain the source of truth. The runner checks the parameters, runs test_stage1 through test_stage8, checks layout on the installed diagrams and exports the diagrams. Paste back the summary and any errors. For an interactive full mission, enter **52** in the stop-time toolbar and press **Run**. Waveforms contains the flight, motor and command scopes. Flight path shows the ground track and draws the 3-D path when the run ends.
 
-Your local DroneSim.slx is the source of truth for the finished body. The S2 builder requires DroneSim/Drone body and checks for it before editing the model. It places its three subsystems upstream and connects speed and torque to the existing body ports. On a rebuild it replaces its tagged S2 subsystems. An occupied input or an unrelated wire on an S2 subsystem is reported before replacement. The body tests use a temporary copy of the installed body. S2 checks the four connections on the installed model and exercises copies of the installed blocks in test benches.
+| Stage | Python reference | MATLAB R2023a |
+|---|---|---|
+| S0 skeleton | Smoke test passed | User confirmed five passes after the empty-model fix |
+| S1 body | Six cases and fixed-step ground recheck passed | Original five steps passed locally. Revised motors-off ground check awaits local run |
+| S2 mixer and motors | Mixer signs, limits, slew, speed lag and torque passed | Written, not run |
+| S3 rate | Frequency response, small steps and saturation recovery passed | Written, not run |
+| S4 attitude | Angle steps passed. Heading drift exceeds the reporting threshold | Written, not run |
+| S5 velocity and altitude | Four steps and tilt-compensation comparison passed | Written, not run |
+| S6 mission | Timing, mirrored commands, yaw rotation and command integrals passed | Written, not run |
+| S7 assembly | Closed-loop hover passed | Compilation, diagram geometry, scopes and export await local run |
+| S8 complete system | Eight isolated maneuvers, mission, mass change and independent replay passed | Written, not run |
 
-For an explicit fresh S1 build, build_stage1 aligns the diagram to the actual port centers and branches vertically to the feedback tag. The S2 runner uses the saved body directly.
+## Design and observations
 
-## Python verification
+**Rate control.** Each axis has a sampled PI with an integral bound and conditional integration at the output limit. Roll and pitch use the rotor thrust moment arm. For yaw, let D = max_speed²/(2 hover_speed), the local slope of rotor speed against normalized command. The four signed motor speed increments give shaft moment 4 D (2 kQ_prop hover_speed + J_total s)/(1 + motor_time_constant s) per yaw command. Divide by inertia_zz s + drag_rotational to obtain yaw rate. The inertia term opposes the roll-off from body inertia over the middle of the frequency range. A small yaw proportional gain of 0.05 leaves room for integral action at the 2 rad/s crossover. The sandbox measured roll/pitch crossover at 7.985 rad/s with 75.73° phase margin and yaw at 2.000 rad/s with 90.34°. These are hover linearizations, with nonlinear saturation tested separately. The isolated rate benches trim vertical thrust as the vehicle tilts so a sustained rate step stays airborne.
 
-With the repository virtual environment active, run `pytest -q`. The tests generate expected/params.json and the stage comparison fixtures. Excerpts from the sandbox run follow.
+**Attitude.** Both 5° steps had a 0.704 s 10–90% rise time and zero measured overshoot. During the 3 s gap following the yaw-rate pulse, heading continued by 4.046°, above the 0.5° threshold. Yaw remains rate-controlled as specified. A proposed follow-up is to latch heading when the yaw command returns to zero and feed a bounded heading correction into the rate loop. That change requires approval.
+
+**Velocity and altitude.** Horizontal PI bandwidth is 0.65 rad/s, below the inner attitude bandwidth. The PI zero matches the drag pole. Position hold integrates commanded climb and retains the target during hover. The climb feedforward weight is 1 − altitude_kp/climb_wc to reduce overshoot while the height reference moves. Measured overshoots were 0.25% horizontally, 5.00% in climb and 0.31% for the altitude step. A 2 m/s forward step lost 0.01756 m with tilt compensation off and 0.0000975 m with it on.
+
+**Approved mission.** The table commands forward, back, right and left at 2 m/s for 4 s each, climb and descent at 1 m/s for 3 s each, and right and left yaw at 10°/s for 3 s each. Each maneuver has a 3 s hover gap. Current yaw rotates body forward/right into north/east references. The full mission reached a minimum height of 4.903 m and ended 0.005298 m from its start, within the 0.5 m limit.
+
+**Isolated maneuvers.** Distance is measured at the end of the hover gap. The lag allowance is half a second of commanded travel. Final speed must be within 10% of the original command. Each horizontal maneuver covered 7.905 m versus 8 m commanded. Vertical travel was +3.038 and −3.038 m. Opposite horizontal and yaw commands exchanged the corresponding rotor traces to numerical precision. The climb/descent speed increments differed from perfect sign symmetry by 9.82% of peak increment, within the declared 15% bound. Thrust is quadratic in rotor speed.
+
+**Mass change.** The 5 s hover held 5 m. At 300 kg the model used 2277.91 rpm, 51.2123 N m and 12.2163 kW per motor (48.8652 kW total). The 360 kg test starts in its corresponding hover trim. It used 2495.33 rpm and 61.4548 N m per motor. These results depend on the placeholder mass, inertia, drag, propeller and motor parameters.
+
+## Reproduce the checks
+
+In the project Python environment run
+
+```sh
+python -m pip install -r requirements.txt
+python -m pip install -e .
+pytest -q
+python tests/py/recheck_stage8.py
+```
+
+The tests write expected/stage0.json through expected/stage8.json and expected/params.json. The independent recheck imports no dronesim code. It reconstructs the motor and controller equations from the design constants, evolves motor speed analytically under each held reference, and uses two midpoint steps per solver interval for the body. It compares each S8 metric and all four motor mirror measures. No disagreements exceeded the declared tolerances. The independently calculated mission return error was 0.0052984054 m.
+
+Sandbox pytest excerpts:
 
 ```text
-ground/down_m: 0.00981 | 0.009809999999992026 | PASS
-ground/overshoot_m: 0 | 0 | PASS
-ground/settling_s: 0.18486283531640899 | 0.185 | PASS
-tau_s: 0.0083 | 0.008321564354160328 | PASS
-5 passed in 1.02s
+full_mission/position_error/end: [0, 0.5] | 0.00529840425 | PASS
+Independent closed-loop replay: all S8 comparisons passed.
+11 passed in 71.05s (0:01:11)
 ```
 
-The corrected ground test starts at the surface at rest with zero speed and shaft torque on all four motors. Gravity loads the spring until it supports the weight. Settling time is the first sample after which penetration stays within 2% of mass times gravity divided by stiffness, observed through one second. Both the continuous reference sampled on the solver grid and the fixed-step RK4 recheck meet the 0.5 s deadline. The S1 body equations are unchanged.
-
-At exact hover the reference was 238.54256 rad/s and shaft torque was 51.21230 N m per motor. The rounded command 0.5766 was tested separately. The clipped command probes reached 0 or 314.15927 rad/s and the measured peak slew was 103.43065 rad/s². A sample-and-hold on the 1.25 ms solver grid lets the inherited Rate Limiter use its hover initial condition. The fixtures hold the command long enough to complete a full speed traverse. The isolated motor time constant check bypasses the limiter and interpolates between solver samples.
-
-Roll, pitch and yaw mixer patterns and saturation passed. With a positive 0.02 demand on one axis at a time, the connected Python plant gave positive accelerations 0.2 s after the step on all three axes. The slew rate, torque and transient responses depend on the specified propeller and ideal motor parameters.
-
-## Local verification pending
-
-The initial S0 empty-model simulation failure was resolved and S0 passed locally. The user also confirmed the original S1 model passed in R2023a and manually straightened its wires. The corrected S1 ground comparison, fresh-build S1 layout code and S2 scripts are written, not run in MATLAB here. The fresh S1 layout code is exercised only by an explicit S1 rebuild.
+MATLAB source was syntax-checked with MISS_HIT. Simulink block compatibility, compilation, response comparisons, zero crossings and overlaps in the diagrams, and rendering require the local R2023a run.

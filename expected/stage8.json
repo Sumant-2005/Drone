@@ -1,0 +1,934 @@
+{
+  "cases": [
+    {
+      "name": "hover",
+      "inputs": {
+        "duration": 5,
+        "mode": "velocity",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mass": 300.0
+      },
+      "checks": [
+        {
+          "signal": "position_error",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 0.0,
+          "atol": 1e-07,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 1e-07
+        },
+        {
+          "signal": "rpm1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2277.9136391525813,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2277.9136381525814,
+          "high": 2277.913640152581
+        },
+        {
+          "signal": "torque1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 51.2122969837587,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 51.2122959837587,
+          "high": 51.212297983758695
+        },
+        {
+          "signal": "kw1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 12.21631234792785,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 12.216311347927851,
+          "high": 12.21631334792785
+        },
+        {
+          "signal": "rpm2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2277.9136391525813,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2277.9136381525814,
+          "high": 2277.913640152581
+        },
+        {
+          "signal": "torque2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 51.2122969837587,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 51.2122959837587,
+          "high": 51.212297983758695
+        },
+        {
+          "signal": "kw2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 12.21631234792785,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 12.216311347927851,
+          "high": 12.21631334792785
+        },
+        {
+          "signal": "rpm3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2277.9136391525813,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2277.9136381525814,
+          "high": 2277.913640152581
+        },
+        {
+          "signal": "torque3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 51.2122969837587,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 51.2122959837587,
+          "high": 51.212297983758695
+        },
+        {
+          "signal": "kw3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 12.21631234792785,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 12.216311347927851,
+          "high": 12.21631334792785
+        },
+        {
+          "signal": "rpm4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2277.9136391525813,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2277.9136381525814,
+          "high": 2277.913640152581
+        },
+        {
+          "signal": "torque4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 51.2122969837587,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 51.2122959837587,
+          "high": 51.212297983758695
+        },
+        {
+          "signal": "kw4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 12.21631234792785,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 12.216311347927851,
+          "high": 12.21631334792785
+        },
+        {
+          "signal": "total_kw",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 48.8652493917114,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 48.865248391711404,
+          "high": 48.8652503917114
+        }
+      ]
+    },
+    {
+      "name": "heavy_hover",
+      "inputs": {
+        "duration": 5,
+        "mode": "velocity",
+        "value": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mass": 360.0
+      },
+      "checks": [
+        {
+          "signal": "position_error",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 0.0,
+          "atol": 1e-07,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 1e-07
+        },
+        {
+          "signal": "rpm1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2495.329368425104,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2495.3293674251045,
+          "high": 2495.3293694251042
+        },
+        {
+          "signal": "torque1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 61.454756380500314,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 61.45475538051045,
+          "high": 61.45475738051044
+        },
+        {
+          "signal": "kw1",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 16.058759621970914,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 16.058758621973563,
+          "high": 16.058760621973565
+        },
+        {
+          "signal": "rpm2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2495.329368425104,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2495.3293674251045,
+          "high": 2495.3293694251042
+        },
+        {
+          "signal": "torque2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 61.454756380500314,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 61.45475538051045,
+          "high": 61.45475738051044
+        },
+        {
+          "signal": "kw2",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 16.058759621970914,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 16.058758621973563,
+          "high": 16.058760621973565
+        },
+        {
+          "signal": "rpm3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2495.329368425104,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2495.3293674251045,
+          "high": 2495.3293694251042
+        },
+        {
+          "signal": "torque3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 61.454756380500314,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 61.45475538051045,
+          "high": 61.45475738051044
+        },
+        {
+          "signal": "kw3",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 16.058759621970914,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 16.058758621973563,
+          "high": 16.058760621973565
+        },
+        {
+          "signal": "rpm4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 2495.329368425104,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 2495.3293674251045,
+          "high": 2495.3293694251042
+        },
+        {
+          "signal": "torque4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 61.454756380500314,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 61.45475538051045,
+          "high": 61.45475738051044
+        },
+        {
+          "signal": "kw4",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 16.058759621970914,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 16.058758621973563,
+          "high": 16.058760621973565
+        },
+        {
+          "signal": "total_kw",
+          "op": "end",
+          "start": 0.0,
+          "stop": 5.0,
+          "target": 1.0,
+          "value": 64.23503848788366,
+          "atol": 1e-05,
+          "rtol": 0.0,
+          "low": 64.23503748789426,
+          "high": 64.23503948789426
+        }
+      ]
+    },
+    {
+      "name": "forward",
+      "inputs": {
+        "duration": 7.0,
+        "table": [
+          [
+            0,
+            2.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            7.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "north",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": 7.904819999523482,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": 7.0,
+          "high": 9.0
+        },
+        {
+          "signal": "v_north",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": 0.1721081592203575,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.2,
+          "high": 0.2
+        }
+      ]
+    },
+    {
+      "name": "back",
+      "inputs": {
+        "duration": 7.0,
+        "table": [
+          [
+            0,
+            -2.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            7.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "north",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": -7.904819999523482,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": -9.0,
+          "high": -7.0
+        },
+        {
+          "signal": "v_north",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": -0.17210815922035766,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.2,
+          "high": 0.2
+        }
+      ]
+    },
+    {
+      "name": "right",
+      "inputs": {
+        "duration": 7.0,
+        "table": [
+          [
+            0,
+            0.0,
+            2.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            7.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "east",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": 7.904819999523482,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": 7.0,
+          "high": 9.0
+        },
+        {
+          "signal": "v_east",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": 0.17210815922035766,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.2,
+          "high": 0.2
+        }
+      ]
+    },
+    {
+      "name": "left",
+      "inputs": {
+        "duration": 7.0,
+        "table": [
+          [
+            0,
+            0.0,
+            -2.0,
+            0.0,
+            0.0
+          ],
+          [
+            4.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            7.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "east",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": -7.904819999523482,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": -9.0,
+          "high": -7.0
+        },
+        {
+          "signal": "v_east",
+          "op": "end",
+          "start": 0.0,
+          "stop": 7.0,
+          "target": 1.0,
+          "value": -0.17210815922035752,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.2,
+          "high": 0.2
+        }
+      ]
+    },
+    {
+      "name": "up",
+      "inputs": {
+        "duration": 6.0,
+        "table": [
+          [
+            0,
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            3.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 3.038381593884722,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": 2.5,
+          "high": 3.5
+        },
+        {
+          "signal": "climb",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.03373053818772961,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.1,
+          "high": 0.1
+        }
+      ]
+    },
+    {
+      "name": "down",
+      "inputs": {
+        "duration": 6.0,
+        "table": [
+          [
+            0,
+            0.0,
+            0.0,
+            -1.0,
+            0.0
+          ],
+          [
+            3.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -3.0381835909934383,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": -3.5,
+          "high": -2.5
+        },
+        {
+          "signal": "climb",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.03281912817202813,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.1,
+          "high": 0.1
+        }
+      ]
+    },
+    {
+      "name": "yaw_right",
+      "inputs": {
+        "duration": 6.0,
+        "table": [
+          [
+            0,
+            0.0,
+            0.0,
+            0.0,
+            10.0
+          ],
+          [
+            3.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "yaw",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.5368684359653776,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": 0.43633231299858233,
+          "high": 0.6108652381980153
+        },
+        {
+          "signal": "r",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.007607973466304884,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.017453292519943295,
+          "high": 0.017453292519943295
+        }
+      ]
+    },
+    {
+      "name": "yaw_left",
+      "inputs": {
+        "duration": 6.0,
+        "table": [
+          [
+            0,
+            0.0,
+            0.0,
+            0.0,
+            -10.0
+          ],
+          [
+            3.0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6.0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "checks": [
+        {
+          "signal": "yaw",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": -0.5368684359653771,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": -0.6108652381980153,
+          "high": -0.43633231299858233
+        },
+        {
+          "signal": "r",
+          "op": "end",
+          "start": 0.0,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.007607973466305452,
+          "atol": 0.005,
+          "rtol": 0.0,
+          "low": -0.017453292519943295,
+          "high": 0.017453292519943295
+        }
+      ]
+    },
+    {
+      "name": "full_mission",
+      "inputs": {
+        "duration": 52.0
+      },
+      "checks": [
+        {
+          "signal": "position_error",
+          "op": "end",
+          "start": 0.0,
+          "stop": 52.0,
+          "target": 1.0,
+          "value": 0.0052984042540950935,
+          "atol": 0.015,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.5
+        },
+        {
+          "signal": "height",
+          "op": "min",
+          "start": 0.0,
+          "stop": 52.0,
+          "target": 1.0,
+          "value": 4.902882581684404,
+          "atol": 0.01,
+          "rtol": 0.0,
+          "low": 2.0,
+          "high": 5.000001
+        }
+      ]
+    },
+    {
+      "name": "forward_0",
+      "inputs": {
+        "duration": 10,
+        "mode": "velocity",
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "compensation": false
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "min",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": -0.01755861394762981,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": -0.5,
+          "high": 1e-08
+        }
+      ]
+    },
+    {
+      "name": "forward_1",
+      "inputs": {
+        "duration": 10,
+        "mode": "velocity",
+        "value": [
+          2,
+          0,
+          0,
+          0
+        ],
+        "compensation": true
+      },
+      "checks": [
+        {
+          "signal": "altitude_change",
+          "op": "min",
+          "start": 0.0,
+          "stop": 10.0,
+          "target": 1.0,
+          "value": -9.747012284666567e-05,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": -0.5,
+          "high": 1e-08
+        }
+      ]
+    }
+  ],
+  "mirrors": [
+    {
+      "first": "forward",
+      "second": "back",
+      "axis": 0,
+      "relative_error": 2.108916453573964e-14,
+      "limit": 0.15,
+      "atol": 0.01
+    },
+    {
+      "first": "right",
+      "second": "left",
+      "axis": 1,
+      "relative_error": 1.6871331628591713e-14,
+      "limit": 0.15,
+      "atol": 0.01
+    },
+    {
+      "first": "up",
+      "second": "down",
+      "axis": 2,
+      "relative_error": 0.09821822187930028,
+      "limit": 0.15,
+      "atol": 0.01
+    },
+    {
+      "first": "yaw_right",
+      "second": "yaw_left",
+      "axis": 3,
+      "relative_error": 1.6514221757218768e-14,
+      "limit": 0.15,
+      "atol": 0.01
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "cases": [
+    {
+      "name": "angle_roll",
+      "inputs": {
+        "duration": 8,
+        "mode": "attitude",
+        "value": [
+          0.08726646259971647,
+          0.0,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "roll",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.703821563584597,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 3.6401451136215632
+        },
+        {
+          "signal": "roll",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.49264764017210677,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.06825272088040431,
+          "high": 1.5925634872094339
+        },
+        {
+          "signal": "roll",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.0,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "roll",
+          "op": "end",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 1.0,
+          "value": 0.08726622507752925,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": 0.08676646259971647,
+          "high": 0.08776646259971647
+        },
+        {
+          "signal": "axis1",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 1.0,
+          "value": 0.02472999785276697,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.149999
+        }
+      ]
+    },
+    {
+      "name": "angle_pitch",
+      "inputs": {
+        "duration": 8,
+        "mode": "attitude",
+        "value": [
+          0.0,
+          0.08726646259971647,
+          0.0
+        ]
+      },
+      "checks": [
+        {
+          "signal": "pitch",
+          "op": "rise",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.703821563584597,
+          "atol": 0.002,
+          "rtol": 0.15,
+          "low": 0.01,
+          "high": 3.6401451136215632
+        },
+        {
+          "signal": "pitch",
+          "op": "tau",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.49264764017210677,
+          "atol": 0.005,
+          "rtol": 0.15,
+          "low": 0.06825272088040431,
+          "high": 1.5925634872094339
+        },
+        {
+          "signal": "pitch",
+          "op": "overshoot",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 0.08726646259971647,
+          "value": 0.0,
+          "atol": 5.0,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 10
+        },
+        {
+          "signal": "pitch",
+          "op": "end",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 1.0,
+          "value": 0.08726622507752924,
+          "atol": 0.0005,
+          "rtol": 0.0,
+          "low": 0.08676646259971647,
+          "high": 0.08776646259971647
+        },
+        {
+          "signal": "axis2",
+          "op": "peak",
+          "start": 0.0,
+          "stop": 8.0,
+          "target": 1.0,
+          "value": 0.02472999785276697,
+          "atol": 0.001,
+          "rtol": 0.0,
+          "low": 0,
+          "high": 0.149999
+        }
+      ]
+    },
+    {
+      "name": "heading_gap",
+      "inputs": {
+        "duration": 6,
+        "mode": "attitude",
+        "value": [
+          0,
+          0,
+          0.17453292519943295
+        ],
+        "pulse_end": 3.0
+      },
+      "checks": [
+        {
+          "signal": "yaw",
+          "op": "change",
+          "start": 3,
+          "stop": 6.0,
+          "target": 1.0,
+          "value": 0.07061316239308463,
+          "atol": 0.004,
+          "rtol": 0.0,
+          "low": -3.141592653589793,
+          "high": 3.141592653589793
+        }
+      ]
+    }
+  ],
+  "design": [
+    {
+      "axis": "roll",
+      "crossover": 2.1977145828784934,
+      "phase_margin_deg": 78.29467486612114
+    },
+    {
+      "axis": "pitch",
+      "crossover": 2.1977145828784934,
+      "phase_margin_deg": 78.29467486612114
+    }
+  ],
+  "heading_drift_deg": 4.045836183195654
+}

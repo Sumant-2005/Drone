@@ -31,6 +31,9 @@ function verify_link(mdl,src,out,dst,in)
 a = get_param([mdl '/' src],'PortHandles');
 b = get_param([mdl '/' dst],'PortHandles');
 line = get_param(b.Inport(in),'Line');
+while line ~= -1 && get_param(line,'LineParent') ~= -1
+    line = get_param(line,'LineParent');
+end
 passed = line ~= -1 && get_param(line,'SrcPortHandle') == a.Outport(out);
 report_check(sprintf('%s/%d to %s/%d',src,out,dst,in),'connected',mat2str(passed),passed);
 assert(passed,'S2 saved-model connection missing or incorrect.');
